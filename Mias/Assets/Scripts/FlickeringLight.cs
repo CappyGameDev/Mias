@@ -7,7 +7,7 @@ public class FlickeringLight : MonoBehaviour {
 	public Light light;
 
 	public float minIntensity = 0.25f;
-	public float maxIntensity = 0.5f;
+	public float maxIntensity = 0.8f;
 
 	float random;
 
