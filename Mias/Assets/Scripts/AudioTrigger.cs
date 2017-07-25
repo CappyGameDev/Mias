@@ -15,6 +15,7 @@ public class AudioTrigger : MonoBehaviour {
 
 	void OnTriggerEnter () {
 		if (triggerPlayed == false){
+			Debug.Log ("Suh d00d");
 			triggerPlayed = true;
 		AudioSource sound = audioCue.GetComponent<AudioSource>();
 		sound.Play();
