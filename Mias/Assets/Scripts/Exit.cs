@@ -7,6 +7,10 @@ public class Exit : MonoBehaviour {
 	[HideInInspector]
 	public bool exitTrue;
 
+	public GameObject rubble1;
+	public GameObject rubble2;
+	public GameObject rubble3;
+	public GameObject rubbleTrigger;
 	public GameObject exitDoor;
 
 	// Use this for initialization
@@ -21,6 +25,12 @@ public class Exit : MonoBehaviour {
 
 	void OpenExit() {
 		if (exitTrue == true){
+			rubble1.GetComponent<MeshRenderer> ().enabled = true;
+			rubble2.GetComponent<MeshRenderer> ().enabled = true;
+			rubble3.GetComponent<MeshRenderer> ().enabled = true;
+
+			rubbleTrigger.GetComponent<BoxCollider> ().enabled = true;
+
 			exitDoor.GetComponent<MeshRenderer> ().enabled = false;
 			exitDoor.GetComponent<BoxCollider> ().isTrigger = true;
 
