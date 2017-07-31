@@ -15,6 +15,8 @@ public class AudioTrigger2 : MonoBehaviour {
 	[HideInInspector]
 	public bool finalCue;
 
+	private bool noMoreExplosions;
+
 	// Use this for initialization
 	void Start () {
 		triggerPlayed = false;
@@ -23,26 +25,28 @@ public class AudioTrigger2 : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
+		if (noMoreExplosions == false){
 
 		if (other.tag == "Player") {
-			if (triggerPlayed == false) {
-				Debug.Log ("Suh d00d");
-				triggerPlayed = true;
-			} else if (triggerPlayed == true) {
-				Debug.Log ("Kaboom");
-				rubbleOn = true;
-				finalCue = true;
-				AudioSource sound = rubbleCue.GetComponent<AudioSource> ();
-				sound.Play ();
-
+				if (triggerPlayed == false) {
+					Debug.Log ("Suh d00d");
+					triggerPlayed = true;
+				} else if (triggerPlayed == true) {
+					Debug.Log ("Kaboom");
+					rubbleOn = true;
+					finalCue = true;
+					AudioSource sound = rubbleCue.GetComponent<AudioSource> ();
+					noMoreExplosions = true;
+					sound.Play ();
+				}
 			}
 		}
 	}
 	// Update is called once per frame
 	void Update () {
-		if (finalCue == true) {
-			exitTrigger.GetComponent<Exit> ().exitTrue = true;
-			Debug.Log ("Times up my d00d");
-		}
+			if (finalCue == true) {
+				exitTrigger.GetComponent<Exit> ().exitTrue = true;
+				Debug.Log ("Times up my d00d");
+			}
 	}
 }

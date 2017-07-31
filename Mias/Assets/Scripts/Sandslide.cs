@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class Sandslide : MonoBehaviour {
 
+	public GameObject playerController;
+
 	public float alphaRate = 0.01f;
+	public float fullAlpha = 1;
+
+	private float timePassed = 1;
+
 
 	private bool sandSlide;
 
@@ -28,9 +34,16 @@ public class Sandslide : MonoBehaviour {
 	}
 
 	void FadeOut (){
+
+		timePassed += Time.deltaTime;
+
 		Image fader = GameObject.Find ("Mr.Fade").GetComponent<Image> ();
 		Color faderColor = fader.color;
 		faderColor.a = faderColor.a + alphaRate * Time.deltaTime;
 		fader.color = faderColor;
+
+		if (timePassed >= 15) {
+			Application.Quit ();
+		}
 	}
 }
