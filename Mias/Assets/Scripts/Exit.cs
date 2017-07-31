@@ -16,6 +16,10 @@ public class Exit : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		exitTrue = false;
+		rubble1.GetComponent<MeshRenderer> ().enabled = false;
+		rubble2.GetComponent<MeshRenderer> ().enabled = false;
+		rubble3.GetComponent<MeshRenderer> ().enabled = false;
+
 	}
 	
 	// Update is called once per frame
